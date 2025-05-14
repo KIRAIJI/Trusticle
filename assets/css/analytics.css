@@ -1,0 +1,36 @@
+/* Analytics specific styles - uses common styles from styles.css */
+
+/* Analytics specific welcome message */
+.welcome-message {
+  margin-bottom: 25px;
+}
+
+.welcome-message h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.welcome-message p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Donut chart specific styles */
+.donut-container {
+  position: relative;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Line chart container */
+.line-chart-container {
+  position: relative;
+  height: 250px;
+}
+
+/* Analytics content */
+.analytics-content {
+  width: 100%;
+}
