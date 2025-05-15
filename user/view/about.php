@@ -5,9 +5,10 @@ include '../includes/header.php';
 
 <!-- Main Content -->
 <div class="main-content">
-    <div class="header">
-        <h1>About Us - Trusticle</h1>
-    </div>
+    <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">About Us</h1>
+        </div>
 
     <div class="content-container">
         <div class="about-section-main">
@@ -51,8 +52,9 @@ include '../includes/header.php';
 
         <div class="about-footer-container">
             <div class="about-logo">
-                <i class="fas fa-feather-alt fa-2x"></i>
-                <div class="logo-text">Trusticle</div>
+                <div class="logo">
+                <img src="../assets/images/logo2.png" alt="Trusticle Logo" class="sidebar-logo">
+                </div>
             </div>
             
             <div class="about-tagline">
@@ -73,138 +75,7 @@ include '../includes/header.php';
     </div>
 </div>
 
-<style>
-    .content-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    
-    .about-section-main {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-    
-    .about-main-title {
-        color: #006a71;
-        font-size: 32px;
-        font-weight: 600;
-        margin-bottom: 25px;
-    }
-    
-    .about-main-description {
-        max-width: 900px;
-        margin: 0 auto;
-        line-height: 1.6;
-        color: #555;
-        font-size: 16px;
-    }
-    
-    .about-boxes-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 30px;
-        margin-bottom: 60px;
-    }
-    
-    .about-box {
-        flex: 1;
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 25px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    
-    .about-box h3 {
-        color: #006a71;
-        margin-bottom: 15px;
-        font-size: 20px;
-    }
-    
-    .about-box p {
-        line-height: 1.5;
-        color: #555;
-        font-size: 15px;
-    }
-    
-    .about-footer-container {
-        background-color: #f5f5f5;
-        padding: 30px;
-        border-radius: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    
-    .about-logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: #006a71;
-    }
-    
-    .about-tagline {
-        text-align: right;
-        max-width: 60%;
-    }
-    
-    .about-tagline h3 {
-        color: #333;
-        margin-bottom: 10px;
-        font-size: 20px;
-    }
-    
-    .about-tagline p {
-        color: #666;
-        line-height: 1.4;
-    }
-    
-    .about-social {
-        display: flex;
-        gap: 15px;
-    }
-    
-    .about-social a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background-color: #006a71;
-        color: white;
-        transition: background-color 0.3s ease;
-    }
-    
-    .about-social a:hover {
-        background-color: #004a50;
-    }
-    
-    .about-copyright {
-        text-align: center;
-        color: #999;
-        font-size: 14px;
-        padding: 15px 0;
-    }
-    
-    @media (max-width: 768px) {
-        .about-boxes-container {
-            flex-direction: column;
-        }
-        
-        .about-footer-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 20px;
-        }
-        
-        .about-tagline {
-            text-align: center;
-            max-width: 100%;
-        }
-    }
-</style>
+<link rel="stylesheet" href="../../assets/css/about.css">
 
 <?php
 // Include the footer file

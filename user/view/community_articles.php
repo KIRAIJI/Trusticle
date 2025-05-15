@@ -36,7 +36,7 @@ include '../includes/header.php';
 <link rel="stylesheet" href="../../assets/css/articles.css">
 <div class="main-content">
     <div class="page-header">
-        <h1 class="header">Community Articles</h1>
+        <h1 class="page-title">Community Articles</h1>
         <a href="article_main.php" class="back-button"><i class="fas fa-arrow-left"></i> Back to Articles</a>
     </div>
     

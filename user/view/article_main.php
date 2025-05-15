@@ -34,16 +34,23 @@ include '../includes/header.php';
 
 <!-- Main Content -->
 <link rel="stylesheet" href="../../assets/css/articles.css">
+<link rel="stylesheet" href="../../assets/css/styles.css">
 <div class="main-content">
-    <h1 class="header">Articles</h1>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Articles</h1>
+    </div>
+
+    <div class="articles-content">
+            <div class="welcome-message">
+                <h1>My Articles</h1>
+                <p>Here's your articles.</p>
+            </div>
     
     <!-- Hidden field to store current username for comments -->
     <span id="currentUsername" class="hidden"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
-    
+
     <div>
-        <h2 class="subheader">My Articles</h2>
-        <p class="section-description">Here's your articles.</p>
-        
         <div class="search-container">
             <div class="search-box">
                 <input type="text" class="search-input" placeholder="Search by title, content, category, or date...">
@@ -115,6 +122,15 @@ include '../includes/header.php';
                     Pending – Waiting for Admin Review
                 </div>
             </div>
+
+            <!-- Article Content with Highlighted Keywords -->
+                <div class="content-section">
+                    <h4 class="content-heading">Article Content</h4>
+                    <div id="articleModalContent" class="article-content"></div>
+                </div>
+                
+                <!-- Source Information -->
+                <div id="articleModalSource" class="article-source"></div>
             
             <!-- Fakeness Meter -->
             <div class="article-fakeness-meter">
@@ -133,15 +149,6 @@ include '../includes/header.php';
                     <span>50-100% - Likely Fake</span>
                 </div>
             </div>
-            
-            <!-- Article Content with Highlighted Keywords -->
-            <div class="content-section">
-                <h4 class="content-heading">Article Content</h4>
-                <div id="articleModalContent" class="article-content"></div>
-            </div>
-            
-            <!-- Source Information -->
-            <div id="articleModalSource" class="article-source"></div>
             
             <!-- Comments Section -->
             <div class="comments-section">
@@ -172,7 +179,7 @@ foreach ($categories as $category) {
 }
 
 // Replace the category options in the modal content
-$modalContent = preg_replace('/<option value="" disabled selected>Category<\/option>.*?<\/select>/s', 
+$modalContent = preg_replace('/<option value="" disabled selected>Category<\\/option>.*?<\\/select>/s', 
     '<option value="" disabled selected>Category</option>' . $categoryOptions . '</select>', $modalContent);
 
 echo $modalContent;

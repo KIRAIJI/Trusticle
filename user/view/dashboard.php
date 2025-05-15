@@ -79,244 +79,19 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Trusticle</title>
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Dashboard container and spacing */
-        .dashboard-content {
-            padding: 20px 0;
-        }
-        
-        .welcome-message {
-            margin-bottom: 30px;
-            padding: 0 10px;
-        }
-        
-        .welcome-message h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        
-        .welcome-message p {
-            color: #666;
-            font-size: 16px;
-        }
-
-        /* Stats grid with improved spacing */
-        .stat-cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 35px;
-            padding: 0 10px;
-        }
-
-        /* Card styling */
-        .stat-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            user-select: none;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-card:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .stat-card:hover:after {
-            opacity: 1;
-        }
-
-        .stat-icon {
-            font-size: 2rem;
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-        }
-
-        .stat-info {
-            flex: 1;
-        }
-
-        .stat-title {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        /* Card Colors */
-        .stat-card.blue {
-            border-left: 4px solid #2196f3;
-        }
-        .stat-card.blue .stat-icon {
-            color: #2196f3;
-            background-color: rgba(33, 150, 243, 0.1);
-        }
-
-        .stat-card.yellow {
-            border-left: 4px solid #ffc107;
-        }
-        .stat-card.yellow .stat-icon {
-            color: #ffc107;
-            background-color: rgba(255, 193, 7, 0.1);
-        }
-
-        .stat-card.green {
-            border-left: 4px solid #4caf50;
-        }
-        .stat-card.green .stat-icon {
-            color: #4caf50;
-            background-color: rgba(76, 175, 80, 0.1);
-        }
-
-        .stat-card.red {
-            border-left: 4px solid #f44336;
-        }
-        .stat-card.red .stat-icon {
-            color: #f44336;
-            background-color: rgba(244, 67, 54, 0.1);
-        }
-
-        /* Recent articles card with improved styling */
-        .articles-card {
-            background-color: #e4dac880;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-            margin: 0 10px 25px 10px;
-            overflow: hidden;
-        }
-
-        .articles-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .articles-card-title {
-            font-weight: 600;
-            font-size: 18px;
-            color: #006a71;
-        }
-
-        .articles-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .articles-table th {
-            text-align: left;
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            font-weight: 600;
-            color: #49463b;
-            background-color: #D2CABA50;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .articles-table th::after {
-            content: "▼";
-            font-size: 10px;
-            margin-left: 5px;
-            opacity: 0.5;
-        }
-
-        .articles-table td {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .articles-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .articles-table tr:hover td {
-            background-color: rgba(138, 126, 72, 0.1);
-        }
-
-        /* Status badges with improved styling */
-        .result-real, .result-fake, .result-pending {
-            display: inline-block;
-            padding: 5px 12px;
-            color: #fff;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 500;
-            text-align: center;
-            min-width: 80px;
-        }
-
-        .result-real {
-            background-color: #4caf50;
-        }
-
-        .result-fake {
-            background-color: #f44336;
-        }
-
-        .result-pending {
-            background-color: #ffc107;
-            color: #333;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .stat-cards-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .articles-card {
-                padding: 15px;
-            }
-            
-            .articles-table th, 
-            .articles-table td {
-                padding: 10px;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="dashboard-container">
         <?php include '../includes/header.php';?>
         <!-- Main Content Area -->
         <div class="main-content">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+            </div>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
@@ -396,7 +171,7 @@ $stmt->close();
                                             <?php if ($article['status'] == 'pending'): ?>
                                                 <span class="result-pending">Pending</span>
                                             <?php elseif ($article['status'] == 'legit'): ?>
-                                                <span class="result-real">Real</span>
+                                                <span class="result-legit">Legit</span>
                                             <?php elseif ($article['status'] == 'fake'): ?>
                                                 <span class="result-fake">Fake</span>
                                             <?php endif; ?>
@@ -448,4 +223,3 @@ $stmt->close();
     });
 </script>
 </html>
-      

@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS articles (
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
+    excerpt TEXT NULL DEFAULT NULL,
     source_url VARCHAR(255),
     date_published DATE,
     category_id INT NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS articles (
     detection_score DECIMAL(5,2) NOT NULL DEFAULT 0.00,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    is_visible TINYINT(1) NOT NULL DEFAULT 1
+    is_visible TINYINT(1) NOT NULL DEFAULT 1,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (category_id) REFERENCES categories(id)
 );
